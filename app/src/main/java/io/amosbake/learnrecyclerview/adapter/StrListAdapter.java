@@ -19,11 +19,11 @@ import io.amosbake.learnrecyclerview.Utils;
  * Date : 2016-01-20
  * Time: 16:22
  */
-public class SimpleListAdapter extends BaseAdapter implements AdapterDataHelper<String> {
+public class StrListAdapter extends BaseAdapter implements AdapterDataHelper<String> {
     private List<String> datas;
     private LayoutInflater mInflater;
 
-    public SimpleListAdapter(ListView listView) {
+    public StrListAdapter(ListView listView) {
         mInflater = LayoutInflater.from(listView.getContext());
         datas = new ArrayList<>();
     }

@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        getSupportFragmentManager().beginTransaction().replace(R.id.frgContainer,new ListviewFragment()).commit();
+//        getSupportFragmentManager().beginTransaction().replace(R.id.frgContainer,new ListviewFragment()).commit();
+
     }
 }

@@ -18,7 +18,7 @@ import java.util.List;
 
 import io.amosbake.learnrecyclerview.DataManager;
 import io.amosbake.learnrecyclerview.R;
-import io.amosbake.learnrecyclerview.adapter.SimpleListAdapter;
+import io.amosbake.learnrecyclerview.adapter.StrListAdapter;
 
 /**
  * Author: yanhao(amosbake@gmail.com)
@@ -30,7 +30,7 @@ public class ListviewFragment extends Fragment implements Handler.Callback {
     private static final int MSG_ADD=0x11;
     private ListView lv;
     private Handler mHandler;
-    private SimpleListAdapter mAdapter;
+    private StrListAdapter mAdapter;
     private List<String> tempDatas=new ArrayList<>();
     private int pageIndex=0;
     private boolean isLoading=false;
@@ -65,7 +65,7 @@ public class ListviewFragment extends Fragment implements Handler.Callback {
 
     private void initComponents() {
         mHandler = new Handler(this);
-        mAdapter = new SimpleListAdapter(lv);
+        mAdapter = new StrListAdapter(lv);
         lv.setAdapter(mAdapter);
         View headView = LayoutInflater.from(getActivity()).inflate(R.layout.view_header, lv, false);
         final View footView = LayoutInflater.from(getActivity()).inflate(R.layout.view_footer, lv, false);
