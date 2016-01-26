@@ -77,7 +77,7 @@ public class StrListAdapter extends BaseAdapter implements AdapterDataHelper<Str
         if (null==convertView){
             convertView=mInflater.inflate(R.layout.item_str,parent,false);
             holder=new ViewHolder();
-            holder.mTextView= (TextView) convertView.findViewById(R.id.show);
+            holder.mTextView= (TextView) convertView;
             convertView.setTag(holder);
         }else {
             holder= (ViewHolder) convertView.getTag();

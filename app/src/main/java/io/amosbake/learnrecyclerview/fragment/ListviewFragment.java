@@ -39,7 +39,7 @@ public class ListviewFragment extends Fragment implements Handler.Callback {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_listview, container, false);
-        lv = (ListView) view;
+        lv = (ListView) view.findViewById(R.id.lv);
         return view;
     }
 
@@ -67,10 +67,10 @@ public class ListviewFragment extends Fragment implements Handler.Callback {
         mHandler = new Handler(this);
         mAdapter = new StrListAdapter(lv);
         lv.setAdapter(mAdapter);
-        View headView = LayoutInflater.from(getActivity()).inflate(R.layout.view_header, lv, false);
+//        View headView = LayoutInflater.from(getActivity()).inflate(R.layout.view_header, lv, false);
         final View footView = LayoutInflater.from(getActivity()).inflate(R.layout.view_footer, lv, false);
         lv.addFooterView(footView);
-        lv.addHeaderView(headView);
+//        lv.addHeaderView(headView);
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
