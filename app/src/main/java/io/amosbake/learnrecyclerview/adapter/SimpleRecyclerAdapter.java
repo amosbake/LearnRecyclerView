@@ -19,15 +19,10 @@ import io.amosbake.learnrecyclerview.Utils;
  * Date : 2016-01-21
  * Time: 09:40
  */
-public class SimpleRecyclerAdapter extends RecyclerView.Adapter<SimpleRecyclerAdapter.Holder> implements AdapterDataHelper<String> {
-    private List<String> datas;
-    private int layoutRes;
-    private Context mContext;
+public class SimpleRecyclerAdapter extends BaseRecyclerAdapter<String> implements AdapterDataHelper<String> {
 
     public SimpleRecyclerAdapter(RecyclerView rv) {
-        datas = new ArrayList<>();
-        layoutRes = R.layout.item_str;
-        mContext = rv.getContext();
+        super(rv,null,R.layout.item_str);
     }
 
     @Override
@@ -55,30 +50,9 @@ public class SimpleRecyclerAdapter extends RecyclerView.Adapter<SimpleRecyclerAd
         }
     }
 
-    @Override
-    public Holder onCreateViewHolder(ViewGroup parent, int viewType) {
-        final View view= LayoutInflater.from(mContext).inflate(layoutRes,parent,false);
-        return new Holder(view);
-    }
 
     @Override
-    public void onBindViewHolder(Holder holder, int position) {
-        String data=datas.get(position);
-        holder.mTextView.setText(data);
-    }
-
-    @Override
-    public int getItemCount() {
-        return datas.size();
-    }
-
-
-    static class Holder extends RecyclerView.ViewHolder {
-        TextView mTextView;
-
-        public Holder(View itemView) {
-            super(itemView);
-            mTextView= (TextView) itemView;
-        }
+    protected void convert(RecyclerHolder holder, String item, int position, boolean isScrolling) {
+        holder.setText(R.id.show,item);
     }
 }

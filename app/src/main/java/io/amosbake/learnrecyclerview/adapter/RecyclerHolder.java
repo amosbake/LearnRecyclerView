@@ -3,6 +3,7 @@ package io.amosbake.learnrecyclerview.adapter;
 import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.SparseArray;
@@ -20,16 +21,16 @@ import android.widget.TextView;
  * Time: 15:35
  */
 public class RecyclerHolder extends RecyclerView.ViewHolder {
-    private static final String TAG = "RecyclerHolder";
-    private final SparseArray<View> mViews;
     private final static int MAX_VIEW_NUMBER = 8;//布局中有id的view数 不超过8个
+    private final SparseArray<View> mViews;
+
 
     public RecyclerHolder(View itemView) {
         super(itemView);
         this.mViews = new SparseArray<>(MAX_VIEW_NUMBER);
     }
 
-    public <T extends View> T getView(int viewId) {
+    public <T extends View> T getView(@IdRes int viewId) {
         View view = mViews.get(viewId);
         if (view == null) {
             view = itemView.findViewById(viewId);
@@ -64,20 +65,20 @@ public class RecyclerHolder extends RecyclerView.ViewHolder {
     }
 
 
-
     /**
      * 设置控件的左margin
+     *
      * @param xPos 左margin像素大小
      */
-    public RecyclerHolder setXPos(int viewId, int xPos){
+    public RecyclerHolder setXPos(int viewId, int xPos) {
         View view = getView(viewId);
         ViewGroup.LayoutParams lp = view.getLayoutParams();
-        if(lp instanceof RelativeLayout.LayoutParams){
-            RelativeLayout.LayoutParams tLp = (RelativeLayout.LayoutParams)lp;
+        if (lp instanceof RelativeLayout.LayoutParams) {
+            RelativeLayout.LayoutParams tLp = (RelativeLayout.LayoutParams) lp;
             tLp.setMargins(xPos, tLp.topMargin, tLp.rightMargin, tLp.bottomMargin);
         }
-        if(lp instanceof LinearLayout.LayoutParams){
-            LinearLayout.LayoutParams tLp = (LinearLayout.LayoutParams)lp;
+        if (lp instanceof LinearLayout.LayoutParams) {
+            LinearLayout.LayoutParams tLp = (LinearLayout.LayoutParams) lp;
             tLp.setMargins(xPos, tLp.topMargin, tLp.rightMargin, tLp.bottomMargin);
         }
         return this;
@@ -86,7 +87,7 @@ public class RecyclerHolder extends RecyclerView.ViewHolder {
     /**
      * 设置item的高度
      */
-    public RecyclerHolder setItemHeight(int height){
+    public RecyclerHolder setItemHeight(int height) {
         itemView.getLayoutParams().height = height;
         return this;
     }
@@ -94,7 +95,7 @@ public class RecyclerHolder extends RecyclerView.ViewHolder {
     /**
      * 设置子控件的高度
      */
-    public RecyclerHolder setSize(int viewId, int width, int height){
+    public RecyclerHolder setSize(int viewId, int width, int height) {
         View view = getView(viewId);
         ViewGroup.LayoutParams lp = view.getLayoutParams();
         lp.height = height;
@@ -106,7 +107,7 @@ public class RecyclerHolder extends RecyclerView.ViewHolder {
     /**
      * 设置子控件可见性
      */
-    public void setVisibility(int viewId, int visibility){
+    public void setVisibility(int viewId, int visibility) {
         View view = getView(viewId);
         view.setVisibility(visibility);
     }
@@ -114,16 +115,17 @@ public class RecyclerHolder extends RecyclerView.ViewHolder {
     /**
      * 设置字体
      */
-    public void setTypeFace(int viewId, Typeface typeFace){
-        ((TextView)getView(viewId)).setTypeface(typeFace);
+    public void setTypeFace(int viewId, Typeface typeFace) {
+        ((TextView) getView(viewId)).setTypeface(typeFace);
     }
 
     /**
      * 设置控件可见
+     *
      * @param viewId
      * @param isVisible
      */
-    public void setVisible(int viewId,boolean isVisible){
-        getView(viewId).setVisibility(isVisible?View.VISIBLE: View.GONE);
+    public void setVisible(int viewId, boolean isVisible) {
+        getView(viewId).setVisibility(isVisible ? View.VISIBLE : View.GONE);
     }
 }

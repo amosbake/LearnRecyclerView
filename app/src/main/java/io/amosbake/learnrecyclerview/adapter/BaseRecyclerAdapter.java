@@ -16,14 +16,11 @@ import java.util.List;
  * Time: 15:31
  */
 public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerHolder> {
-    protected List<T> datas;
     private final int itemLayoutId;
     private boolean isScrolling;
     protected final Context context;
+    protected List<T> datas;
 
-    public List<T> getDatas() {
-        return datas;
-    }
 
     public BaseRecyclerAdapter(RecyclerView v, Collection<T> datas, int itemLayoutId) {
         if (datas == null) {
@@ -42,6 +39,10 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
                 isScrolling = !(newState == RecyclerView.SCROLL_STATE_IDLE);
             }
         });
+    }
+
+    public Collection<T> getDatas() {
+        return datas;
     }
 
     /**
@@ -68,7 +69,6 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
     public int getItemCount() {
         return datas.size();
     }
-
 
 
     public BaseRecyclerAdapter<T> refresh(Collection<T> datas) {

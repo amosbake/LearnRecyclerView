@@ -35,7 +35,7 @@ public class RecylerViewFragment extends Fragment implements Handler.Callback {
     private List<String> tempDatas;
     private boolean isLoading;
     private RecyclerView rv;
-    private SimpleRecyclerAdapter mAdapter;
+    private StrRecycleAdapter mAdapter;
     private RecyclerView.LayoutManager mManager;
     private RecyclerView.ItemDecoration mDecoration;
     private Handler mHandler;
@@ -61,7 +61,7 @@ public class RecylerViewFragment extends Fragment implements Handler.Callback {
         isLoading = false;
         mManager = new LinearLayoutManager(rv.getContext());
         rv.setLayoutManager(mManager);
-        mAdapter = new SimpleRecyclerAdapter(rv);
+        mAdapter = new StrRecycleAdapter(rv);
         rv.setAdapter(mAdapter);
         mDecoration = new GridSpaceItemDecoration(1, getResources().getDimensionPixelSize(R.dimen.simple_offset_outer_horizontal),
                 getResources().getDimensionPixelSize(R.dimen.simple_offset_outer_vertical),
